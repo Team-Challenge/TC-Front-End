@@ -1,7 +1,11 @@
+import { SignUp } from '../../pages/SignUp';
+
 const App: React.FC = () => {
   return (
-    <h1 className="bg-cyan-400 text-3xl font-bold underline">Hi World</h1>
-  )
+    <div className='h-screen w-full'>
+      <SignUp />
+    </div>
+  );
 };
 
 export default App;
