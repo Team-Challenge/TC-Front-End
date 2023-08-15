@@ -36,6 +36,7 @@
     "quotes": ["error", "single"],
     "no-duplicate-imports": "error",
     "unused-imports/no-unused-imports": "error",
-    "unused-imports/no-unused-vars": "error"
+    "unused-imports/no-unused-vars": "error",
+    "react/jsx-max-props-per-line": ["error", { "maximum": 1, "when": "multiline" }]
   }
 }
