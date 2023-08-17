@@ -1,9 +1,4 @@
-interface ModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  children: React.ReactNode;
-  buttonText: string;
-}
+import { ModalProps } from '../../types';
 
 export const Modal = ({ isOpen, onClose, children, buttonText }: ModalProps) => {
   if (!isOpen) return null;
