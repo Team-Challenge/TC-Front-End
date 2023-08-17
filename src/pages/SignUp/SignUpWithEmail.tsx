@@ -36,6 +36,12 @@ export const SignUpWithEmail = ({ openModal }: SignUpEmailProps) => {
     </p>
   );
 
+  const passwordValidation = errors.password && (
+    <p className='text-red-500 text-xs italic'>
+      {errors?.password?.message || 'Your password must contain 8 characters'}
+    </p>
+  );
+
   return (
     <div className='h-screen flex items-center justify-center'>
       <div className='flex flex-col items-start justify-center w-[450px] ml-[155px] mr-[145px] my-[150px]'>
@@ -81,17 +87,22 @@ export const SignUpWithEmail = ({ openModal }: SignUpEmailProps) => {
               type={passwordShown ? 'text' : 'password'}
               placeholder='Pass'
               {...register('password', {
+                pattern: {
+                  value: /^(?=.*[A-Z])(?=.*\d).+$/,
+                  message: 'Your password must contain at least one capital letter and a number',
+                },
                 required: true,
-                minLength: 8,
+                minLength: {
+                  value: 8,
+                  message: 'Minimum of 8 characters',
+                },
               })}
               className='input-style w-full'
             />
             <i onClick={togglePasswordVisiblity} className='absolute right-[3%] top-[35%]'>
               <EyeIcon />
             </i>
-            {errors.password && (
-              <p className='text-red-500 text-xs italic'>Your password must contain 8 characters</p>
-            )}
+            {passwordValidation}
           </div>
           <div className='relative'>
             <input
