@@ -1,8 +1,5 @@
 // import { Link } from 'react-router-dom';
-
-interface SignUpOptionsProps {
-  handleSignUpEmail: () => void;
-}
+import { SignUpOptionsProps } from '../../types';
 
 export const SignUpOptions = ({ handleSignUpEmail }: SignUpOptionsProps) => {
   return (

@@ -1,18 +1,7 @@
 import { useRef, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { EyeIcon } from '../../components/EyeIcon';
-
-interface SignUpEmailType {
-  fullname: string;
-  email: string;
-  checkbox: boolean;
-  password: string;
-  passwordRepeat: string;
-}
-
-interface SignUpEmailProps {
-  openModal: () => void;
-}
+import { EyeIcon } from '../../components/icons/EyeIcon';
+import { SignUpEmailType, SignUpEmailProps } from '../../types';
 
 export const SignUpWithEmail = ({ openModal }: SignUpEmailProps) => {
   const {

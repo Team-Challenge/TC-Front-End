@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { RegistrationBenefits } from '../../components/RegistrationBenefits';
+import { RegistrationBenefits } from '../../components/auth/RegistrationBenefits';
 import { SignUpWithEmail } from './SignUpWithEmail';
-import Modal from '../../components/Modal';
+import Modal from '../../components/auth/Modal';
 import { RegistrationSuccessMessage } from './RegistrationSuccessMessage';
 import { SignUpOptions } from './SignUpOptions';
 
