@@ -14,7 +14,7 @@ export const SignUpWithEmail = ({ openModal }: SignUpEmailProps) => {
   });
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisiblity = () => {
-    setPasswordShown(passwordShown ? false : true);
+    setPasswordShown(!passwordShown);
   };
 
   const password = useRef({});
@@ -64,9 +64,7 @@ export const SignUpWithEmail = ({ openModal }: SignUpEmailProps) => {
               <EyeIcon />
             </i>
             {errors.password && (
-              <p className='text-red-500 text-xs italic'>
-                Your password must contain 8 characters
-              </p>
+              <p className='text-red-500 text-xs italic'>Your password must contain 8 characters</p>
             )}
           </div>
           <div className='relative'>
