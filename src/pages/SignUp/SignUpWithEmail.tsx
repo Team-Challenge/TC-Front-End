@@ -30,6 +30,12 @@ export const SignUpWithEmail = ({ openModal }: SignUpEmailProps) => {
     </p>
   );
 
+  const emailValidation = errors.email && (
+    <p className='text-red-500 text-xs italic'>
+      {errors?.email.message || 'This field is required'}
+    </p>
+  );
+
   return (
     <div className='h-screen flex items-center justify-center'>
       <div className='flex flex-col items-start justify-center w-[450px] ml-[155px] mr-[145px] my-[150px]'>
@@ -55,14 +61,21 @@ export const SignUpWithEmail = ({ openModal }: SignUpEmailProps) => {
             />
             {fullNameValidations}
           </div>
-          <input
-            type='email'
-            placeholder='Email'
-            {...register('email', {
-              required: true,
-            })}
-            className='input-style'
-          />
+          <div className='relative'>
+            <input
+              type='email'
+              placeholder='Email'
+              {...register('email', {
+                required: true,
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                  message: 'The email should be in the format "email@mail.com" ',
+                },
+              })}
+              className='input-style w-full'
+            />
+            {emailValidation}
+          </div>
           <div className='relative'>
             <input
               type={passwordShown ? 'text' : 'password'}
