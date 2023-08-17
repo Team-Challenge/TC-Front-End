@@ -24,6 +24,12 @@ export const SignUpWithEmail = ({ openModal }: SignUpEmailProps) => {
     console.log(data);
   };
 
+  const fullNameValidations = errors.fullname && (
+    <p className='text-red-500 text-xs italic'>
+      {errors?.fullname?.message || 'Please type your Full Name'}
+    </p>
+  );
+
   return (
     <div className='h-screen flex items-center justify-center'>
       <div className='flex flex-col items-start justify-center w-[450px] ml-[155px] mr-[145px] my-[150px]'>
@@ -34,14 +40,21 @@ export const SignUpWithEmail = ({ openModal }: SignUpEmailProps) => {
           Lorem ipsum dolor sit amet, consectetur acing adipiscing elit adipisc
         </p>
         <form id='form' className='w-[400px] flex flex-col gap-3' onSubmit={handleSubmit(onSubmit)}>
-          <input
-            type='text'
-            placeholder='Full Name'
-            {...register('fullname', {
-              required: true,
-            })}
-            className='input-style'
-          />
+          <div className='relative'>
+            <input
+              type='text'
+              placeholder='Full Name'
+              {...register('fullname', {
+                required: true,
+                pattern: {
+                  value: /^[A-Za-zА-Яа-яЁё\s]+$/,
+                  message: 'Only letters',
+                },
+              })}
+              className='input-style w-full'
+            />
+            {fullNameValidations}
+          </div>
           <input
             type='email'
             placeholder='Email'
