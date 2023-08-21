@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { AuthResponse } from '../types';
-import { $api } from '../http/index';
+import $api from '../http/index';
 
 const AuthService = {
   login: async (email: string, password: string): Promise<AxiosResponse<AuthResponse>> => {
