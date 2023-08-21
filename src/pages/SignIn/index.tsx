@@ -14,7 +14,7 @@ export const SignIn = () => {
   });
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisiblity = () => {
-    setPasswordShown(passwordShown ? false : true);
+    setPasswordShown(!passwordShown);
   };
 
   const onSubmit: SubmitHandler<SignInType> = (data) => {
@@ -62,9 +62,7 @@ export const SignIn = () => {
             Continue
           </button>
         </form>
-        <button
-          className='w-[400px] text-black text-xs font-light leading-[120%] uppercase px-4 py-3 rounded-md bg-white border rounded-md border-solid border-black my-4'
-        >
+        <button className='w-[400px] text-black text-xs font-light leading-[120%] uppercase px-4 py-3 rounded-md bg-white border rounded-md border-solid border-black my-4'>
           Sign in with Google
         </button>
         <div className='text-[10px] font-light leading-[120%] self-center flex gap-2'>
