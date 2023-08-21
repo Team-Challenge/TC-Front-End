@@ -24,9 +24,9 @@ export const SignUpWithEmail = ({ openModal }: SignUpEmailProps) => {
     console.log(data);
   };
 
-  const fullNameValidations = errors.fullname && (
+  const fullNameValidations = errors.full_name && (
     <p className='text-red-500 text-xs italic'>
-      {errors?.fullname?.message || 'Please type your Full Name'}
+      {errors?.full_name?.message || 'Please type your Full Name'}
     </p>
   );
 
@@ -56,7 +56,7 @@ export const SignUpWithEmail = ({ openModal }: SignUpEmailProps) => {
             <input
               type='text'
               placeholder='Full Name'
-              {...register('fullname', {
+              {...register('full_name', {
                 required: true,
                 pattern: {
                   value: /^[A-Za-zА-Яа-яЁё\s]+$/,
