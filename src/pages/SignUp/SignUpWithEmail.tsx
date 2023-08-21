@@ -14,7 +14,7 @@ export const SignUpWithEmail = ({ openModal }: SignUpEmailProps) => {
   });
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisiblity = () => {
-    setPasswordShown(passwordShown ? false : true);
+    setPasswordShown(!passwordShown);
   };
 
   const password = useRef({});
@@ -23,6 +23,24 @@ export const SignUpWithEmail = ({ openModal }: SignUpEmailProps) => {
   const onSubmit: SubmitHandler<SignUpEmailType> = (data) => {
     console.log(data);
   };
+
+  const fullNameValidations = errors.fullname && (
+    <p className='text-red-500 text-xs italic'>
+      {errors?.fullname?.message || 'Please type your Full Name'}
+    </p>
+  );
+
+  const emailValidation = errors.email && (
+    <p className='text-red-500 text-xs italic'>
+      {errors?.email.message || 'This field is required'}
+    </p>
+  );
+
+  const passwordValidation = errors.password && (
+    <p className='text-red-500 text-xs italic'>
+      {errors?.password?.message || 'Your password must contain 8 characters'}
+    </p>
+  );
 
   return (
     <div className='h-screen flex items-center justify-center'>
@@ -34,40 +52,57 @@ export const SignUpWithEmail = ({ openModal }: SignUpEmailProps) => {
           Lorem ipsum dolor sit amet, consectetur acing adipiscing elit adipisc
         </p>
         <form id='form' className='w-[400px] flex flex-col gap-3' onSubmit={handleSubmit(onSubmit)}>
-          <input
-            type='text'
-            placeholder='Full Name'
-            {...register('fullname', {
-              required: true,
-            })}
-            className='input-style'
-          />
-          <input
-            type='email'
-            placeholder='Email'
-            {...register('email', {
-              required: true,
-            })}
-            className='input-style'
-          />
+          <div className='relative'>
+            <input
+              type='text'
+              placeholder='Full Name'
+              {...register('fullname', {
+                required: true,
+                pattern: {
+                  value: /^[A-Za-zА-Яа-яЁёЄєІіЇїҐґ\s]+$/,
+                  message: 'Only letters',
+                },
+              })}
+              className='input-style w-full'
+            />
+            {fullNameValidations}
+          </div>
+          <div className='relative'>
+            <input
+              type='email'
+              placeholder='Email'
+              {...register('email', {
+                required: true,
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                  message: 'The email should be in the format "email@mail.com" ',
+                },
+              })}
+              className='input-style w-full'
+            />
+            {emailValidation}
+          </div>
           <div className='relative'>
             <input
               type={passwordShown ? 'text' : 'password'}
               placeholder='Pass'
               {...register('password', {
+                pattern: {
+                  value: /^(?=.*[A-Z])(?=.*\d).+$/,
+                  message: 'Your password must contain at least one capital letter and a number',
+                },
                 required: true,
-                minLength: 8,
+                minLength: {
+                  value: 8,
+                  message: 'Minimum of 8 characters',
+                },
               })}
               className='input-style w-full'
             />
             <i onClick={togglePasswordVisiblity} className='absolute right-[3%] top-[35%]'>
               <EyeIcon />
             </i>
-            {errors.password && (
-              <p className='text-red-500 text-xs italic'>
-                Your password must contain 8 characters
-              </p>
-            )}
+            {passwordValidation}
           </div>
           <div className='relative'>
             <input
