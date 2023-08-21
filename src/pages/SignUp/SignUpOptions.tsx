@@ -1,4 +1,4 @@
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { SignUpOptionsProps } from '../../types';
 
 export const SignUpOptions = ({ handleSignUpEmail }: SignUpOptionsProps) => {
@@ -28,11 +28,9 @@ export const SignUpOptions = ({ handleSignUpEmail }: SignUpOptionsProps) => {
         By creating an account you agree with our Terms of Service, Privacy Policy, and our default
         Notification Settings.
       </p>
-      <div className='text-[10px] font-light leading-[120%] self-center'>
+      <div className='text-[10px] font-light leading-[120%] self-center flex gap-2'>
         <p>Already have an account?</p>
-        {/* <Link to=''>
-          Sign in
-        </Link> */}
+        <Link to='/signin'>Sign in</Link>
       </div>
     </div>
   );

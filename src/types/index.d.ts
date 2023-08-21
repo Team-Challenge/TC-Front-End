@@ -27,3 +27,11 @@ export interface SignUpEmailProps {
   openModal: () => void;
 }
 
+export interface SignInType {
+  email: string;
+  password: string;
+}
+
+
+
+
