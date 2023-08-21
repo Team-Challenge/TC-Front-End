@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { RegistrationBenefits } from '../../components/auth/RegistrationBenefits';
 import { SignUpWithEmail } from './SignUpWithEmail';
 import Modal from '../../components/auth/Modal';
 import { RegistrationSuccessMessage } from './RegistrationSuccessMessage';
@@ -25,8 +24,7 @@ export const SignUp = () => {
   };
 
   return (
-    <div className='h-screen grid grid-cols-[50%_50%]'>
-      <RegistrationBenefits />
+    <section>
       {!signUpEmail && !isCongratulations && (
         <SignUpOptions handleSignUpEmail={handleSignUpEmail} />
       )}
@@ -48,6 +46,6 @@ export const SignUp = () => {
         </Modal>
       )}
       {isCongratulations && <RegistrationSuccessMessage />}
-    </div>
+    </section>
   );
 };
