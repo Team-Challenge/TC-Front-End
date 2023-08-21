@@ -1,7 +1,10 @@
 import { useRef, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { EyeIcon } from '../../components/icons/EyeIcon';
-import { SignUpEmailType, SignUpEmailProps } from '../../types';
+import { IUserAuth, SignUpEmailProps } from '../../types';
+import { useAppDispatch } from '../../hooks/reduxHook';
+import { registration } from '../../store/Auth/authThunks';
+import { setUser } from '../../store/Auth/authSlice';
 
 export const SignUpWithEmail = ({ openModal }: SignUpEmailProps) => {
   const {
@@ -9,19 +12,27 @@ export const SignUpWithEmail = ({ openModal }: SignUpEmailProps) => {
     handleSubmit,
     watch,
     formState: { errors, isValid },
-  } = useForm<SignUpEmailType>({
+  } = useForm<IUserAuth>({
     mode: 'onChange',
   });
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisiblity = () => {
     setPasswordShown(!passwordShown);
   };
+  const dispatch = useAppDispatch();
 
   const password = useRef({});
   password.current = watch('password', '');
 
-  const onSubmit: SubmitHandler<SignUpEmailType> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<IUserAuth> = (data) => {
+    const postData = {
+      full_name: data.full_name,
+      email: data.email,
+      password: data.password,
+    };
+    dispatch(registration(postData));
+    dispatch(setUser(postData));
+    console.log('data', postData);
   };
 
   const fullNameValidations = errors.full_name && (
