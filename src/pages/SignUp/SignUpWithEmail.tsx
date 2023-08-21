@@ -59,7 +59,7 @@ export const SignUpWithEmail = ({ openModal }: SignUpEmailProps) => {
               {...register('fullname', {
                 required: true,
                 pattern: {
-                  value: /^[A-Za-zА-Яа-яЁё\s]+$/,
+                  value: /^[A-Za-zА-Яа-яЁёЄєІіЇїҐґ\s]+$/,
                   message: 'Only letters',
                 },
               })}
