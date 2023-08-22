@@ -15,12 +15,12 @@ export interface SignUpOptionsProps {
   handleSignUpEmail: () => void;
 }
 
-export interface SignUpEmailType {
-  fullname: string;
+export interface IUserAuth {
+  full_name?: string;
   email: string;
-  checkbox: boolean;
+  checkbox?: boolean;
   password: string;
-  passwordRepeat: string;
+  passwordRepeat?: string;
 }
 
 export interface SignUpEmailProps {
@@ -32,6 +32,8 @@ export interface SignInType {
   password: string;
 }
 
-
-
-
+export interface AuthResponse {
+  accessToken: string;
+  refreshToken: string;
+  user: SignUpEmailType;
+}
