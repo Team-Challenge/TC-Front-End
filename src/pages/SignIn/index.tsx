@@ -8,18 +8,30 @@ export const SignIn = () => {
   const {
     register,
     handleSubmit,
-    formState: { isValid },
+    formState: { isValid, errors },
   } = useForm<SignInType>({
     mode: 'onChange',
   });
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisiblity = () => {
-    setPasswordShown(passwordShown ? false : true);
+    setPasswordShown(!passwordShown);
   };
 
   const onSubmit: SubmitHandler<SignInType> = (data) => {
     console.log(data);
   };
+
+  const emailValidation = errors.email && (
+    <p className='text-red-500 text-xs italic'>
+      {errors?.email.message || 'This field is required'}
+    </p>
+  );
+
+  const passwordValidation = errors.password && (
+    <p className='text-red-500 text-xs italic'>
+      {errors?.password?.message || 'Your password must contain 8 characters'}
+    </p>
+  );
 
   return (
     <section className='h-screen flex items-center justify-center'>
@@ -31,24 +43,39 @@ export const SignIn = () => {
           Lorem ipsum dolor sit amet, consectetur acing adipiscing elit adipisc
         </p>
         <form id='form' className='w-[400px] flex flex-col gap-3' onSubmit={handleSubmit(onSubmit)}>
-          <input
-            type='email'
-            placeholder='Email'
-            {...register('email', {
-              required: true,
-            })}
-            className='input-style'
-          />
+          <div className='relative'>
+            <input
+              type='email'
+              placeholder='Email'
+              {...register('email', {
+                required: true,
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                  message: 'The email should be in the format "email@mail.com" ',
+                },
+              })}
+              className='input-style w-full'
+            />
+            {emailValidation}
+          </div>
           <div className='relative'>
             <input
               type={passwordShown ? 'text' : 'password'}
               placeholder='Pass'
               {...register('password', {
+                pattern: {
+                  value: /^(?=.*[A-Z])(?=.*\d).+$/,
+                  message: 'Your password must contain at least one capital letter and a number',
+                },
                 required: true,
-                minLength: 8,
+                minLength: {
+                  value: 8,
+                  message: 'Minimum of 8 characters',
+                },
               })}
               className='input-style w-full'
             />
+            {passwordValidation}
             <i onClick={togglePasswordVisiblity} className='absolute right-[3%] top-[35%]'>
               <EyeIcon />
             </i>
@@ -62,9 +89,7 @@ export const SignIn = () => {
             Continue
           </button>
         </form>
-        <button
-          className='w-[400px] text-black text-xs font-light leading-[120%] uppercase px-4 py-3 rounded-md bg-white border rounded-md border-solid border-black my-4'
-        >
+        <button className='w-[400px] text-black text-xs font-light leading-[120%] uppercase px-4 py-3 rounded-md bg-white border rounded-md border-solid border-black my-4'>
           Sign in with Google
         </button>
         <div className='text-[10px] font-light leading-[120%] self-center flex gap-2'>
