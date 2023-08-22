@@ -15,8 +15,8 @@ export interface SignUpOptionsProps {
   handleSignUpEmail: () => void;
 }
 
-export interface SignUpEmailType {
-  full_name: string;
+export interface IUserAuth {
+  full_name?: string;
   email: string;
   checkbox?: boolean;
   password: string;
