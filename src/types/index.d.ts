@@ -18,9 +18,9 @@ export interface SignUpOptionsProps {
 export interface SignUpEmailType {
   full_name: string;
   email: string;
-  checkbox: boolean;
+  checkbox?: boolean;
   password: string;
-  passwordRepeat: string;
+  passwordRepeat?: string;
 }
 
 export interface SignUpEmailProps {
@@ -30,4 +30,10 @@ export interface SignUpEmailProps {
 export interface SignInType {
   email: string;
   password: string;
+}
+
+export interface AuthResponse {
+  accessToken: string;
+  refreshToken: string;
+  user: SignUpEmailType;
 }
