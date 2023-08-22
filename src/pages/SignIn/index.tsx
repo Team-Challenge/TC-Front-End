@@ -2,14 +2,14 @@ import { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { EyeIcon } from '../../components/icons/EyeIcon';
 import { Link } from 'react-router-dom';
-import { SignInType } from '../../types';
+import { IUserAuth } from '../../types';
 
 export const SignIn = () => {
   const {
     register,
     handleSubmit,
     formState: { isValid, errors },
-  } = useForm<SignInType>({
+  } = useForm<IUserAuth>({
     mode: 'onChange',
   });
   const [passwordShown, setPasswordShown] = useState(false);
@@ -17,7 +17,7 @@ export const SignIn = () => {
     setPasswordShown(!passwordShown);
   };
 
-  const onSubmit: SubmitHandler<SignInType> = (data) => {
+  const onSubmit: SubmitHandler<IUserAuth> = (data) => {
     console.log(data);
   };
 
