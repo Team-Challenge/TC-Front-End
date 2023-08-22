@@ -27,11 +27,6 @@ export interface SignUpEmailProps {
   openModal: () => void;
 }
 
-export interface SignInType {
-  email: string;
-  password: string;
-}
-
 export interface AuthResponse {
   accessToken: string;
   refreshToken: string;
