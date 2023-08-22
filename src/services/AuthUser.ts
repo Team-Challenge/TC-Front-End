@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { IUserAuth } from '../types';
-import { $api } from '../http';
+import $api from '../http';
 
 const UserService = {
   fetchUsers: async (): Promise<AxiosResponse<IUserAuth[]>> => {
