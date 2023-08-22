@@ -16,7 +16,7 @@ export interface SignUpOptionsProps {
 }
 
 export interface SignUpEmailType {
-  fullname: string;
+  full_name: string;
   email: string;
   checkbox: boolean;
   password: string;
@@ -31,7 +31,3 @@ export interface SignInType {
   email: string;
   password: string;
 }
-
-
-
-
