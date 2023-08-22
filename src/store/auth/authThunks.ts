@@ -17,6 +17,11 @@ export const registration = createAsyncThunk(
       credentials.email,
       credentials.password,
     );
+    if (response.status === 200 && response.data.user) {
+      console.log('user is alredy register', response.data.user);
+    } else {
+      console.log('user is not');
+    }
     return response.data;
   },
 );
