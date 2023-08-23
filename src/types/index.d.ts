@@ -32,3 +32,22 @@ export interface AuthResponse {
   refreshToken: string;
   user: SignUpEmailType;
 }
+
+export interface AuthHeaderProps {
+  text: string;
+}
+
+export interface AuthData {
+  openModal?: () => void;
+  isRegistration?: boolean;
+}
+
+export interface AuthButtonProps {
+  text: string;
+  onClick?: () => void;
+  className?: string;
+  variant?: string;
+  disabled?: boolean;
+}
+
+
