@@ -2,7 +2,6 @@ import { SignUpOptionsProps } from '../../types';
 import { AuthHeader } from '../../components/auth/AuthHeader';
 import { AuthButton } from '../../components/auth/AuthButton';
 import { AuthLink } from '../../components/auth/AuthLinks';
-AuthHeader
 
 export const SignUpOptions = ({ handleSignUpEmail }: SignUpOptionsProps) => {
   return (
