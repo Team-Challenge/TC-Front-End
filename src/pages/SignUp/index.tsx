@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { SignUpWithEmail } from './SignUpWithEmail';
 import Modal from '../../components/auth/Modal';
-import { RegistrationSuccessMessage } from './RegistrationSuccessMessage';
 import { SignUpOptions } from './SignUpOptions';
+import { SignUpWithEmail } from './SignUpWithEmail';
+import { RegistrationSuccessMessage } from './RegistrationSuccessMessage';
 
 export const SignUp = () => {
   const [signUpEmail, setSignUpEmail] = useState<boolean>(false);
