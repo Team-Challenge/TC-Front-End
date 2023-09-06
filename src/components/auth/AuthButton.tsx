@@ -13,7 +13,7 @@ export const AuthButton = ({
   ${className}`;
 
   return (
-    <button className={btnStyle} onClick={onClick}>
+    <button className={btnStyle} onClick={onClick} disabled={disabled}>
       {text}
     </button>
   );
