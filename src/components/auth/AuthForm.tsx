@@ -73,8 +73,12 @@ export const AuthForm = ({ openModal, isRegistration }: AuthData) => {
             {...register('full_name', {
               required: true,
               pattern: {
-                value: /^[A-Za-zА-Яа-яЁёЄєІіЇїҐґ\s]+$/,
+                value: /^[a-zA-Z\xC0-\uFFFF]+([ \-']{0,1}[a-zA-Z\xC0-\uFFFF]+){3,5}[.]{0,1}$/,
                 message: 'Only letters',
+              },
+              maxLength: {
+                value: 50,
+                message: 'The name is too long',
               },
             })}
             className='input-style w-full'
@@ -89,7 +93,7 @@ export const AuthForm = ({ openModal, isRegistration }: AuthData) => {
           {...register('email', {
             required: true,
             pattern: {
-              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+              value: /^[\p{L}\p{N}_.-]+@([\p{L}\p{N}-]+\.)+[\p{L}\p{N}-]{2,}$/gu,
               message: 'The email should be in the format "email@mail.com" ',
             },
           })}
@@ -103,8 +107,8 @@ export const AuthForm = ({ openModal, isRegistration }: AuthData) => {
           placeholder='Pass'
           {...register('password', {
             pattern: {
-              value: /^(?=.*[A-Z])(?=.*\d).+$/,
-              message: 'Your password must contain at least one capital letter and a number',
+              value: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).+$/,
+              message: 'Your password must contain at least one uppercase letter, one lowercase letter, and a number',
             },
             required: true,
             minLength: {
