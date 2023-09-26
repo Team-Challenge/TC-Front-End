@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { AuthResponse } from '../types';
 
-export const BASE_URL = 'https://be-marketplace-25yxc.ondigitalocean.app/';
+export const BASE_URL = process.env.API_URL;
 
 const $api = axios.create({
   withCredentials: true,
