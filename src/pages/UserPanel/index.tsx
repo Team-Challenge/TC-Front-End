@@ -4,7 +4,7 @@ import { Order } from './components/Order';
 import { FavoriteProducts } from './components/FavoriteProducts';
 import { Store } from './components/Store';
 import { Settings } from './components/Settings';
-// import s from './UserPanel.module.scss';
+import s from './UserPanel.module.scss';
 
 const buttonData = [
   { id: '1', label: 'Профіль', content: <Profile /> },
@@ -22,16 +22,24 @@ export const UserPanel = () => {
   };
 
   return (
-    <section>
-      {buttonData.map((button) => (
-        <button
-          key={button.id}
-          onClick={() => handleButtonClick(button.content)}
-          // className=`${s.btn}`
-        >
-          {button.label}
+    <section className={s.panel}>
+      <div className={s.wrap}>
+        {buttonData.map((button) => (
+          <button
+            key={button.id}
+            onClick={() => handleButtonClick(button.content)}
+            className={`${s.btn} ${
+              selectedComponent === button.content ? s.active : ''
+            }`}
+          >
+            {button.label}
+          </button>
+        ))}
+        <span className={s.line}></span>
+        <button className={s.btn}>
+          Вийти
         </button>
-      ))}
+      </div>
       {selectedComponent}
     </section>
   );
