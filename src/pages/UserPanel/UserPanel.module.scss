@@ -1,0 +1,13 @@
+.btn {
+  color: #000;
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+  &.active {
+    border-radius: 8px;
+    background: #F4F8F9;
+  }
+}
