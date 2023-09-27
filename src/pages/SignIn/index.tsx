@@ -2,16 +2,20 @@ import { AuthHeader } from '../../components/auth/AuthHeader';
 import { AuthForm } from '../../components/auth/AuthForm';
 import { AuthButton } from '../../components/auth/AuthButton';
 import { AuthLink } from '../../components/auth/AuthLinks'; 
+import { RegistrationBenefits } from '../../components/RegistrationBenefits';
+import s from './SignIn.module.scss';
 
 export const SignIn = () => {
   return (
-    <section className='h-screen flex items-center justify-center'>
-      <div className='flex flex-col items-start justify-center w-[450px] ml-[155px] mr-[145px] my-[150px]'>
-        <AuthHeader text='Sign in' />
+    <section className={s.section}>
+      <RegistrationBenefits />
+      <div className={s.wrap}>
+        <AuthHeader text='Вхід' />
         <AuthForm />
         <AuthButton
           text='Sign in with Google'
-          className='w-[400px] text-black text-xs font-light bg-white border-black my-4'
+          className={s.btn}
+          variant='secondary'
         />
         <AuthLink />
       </div>

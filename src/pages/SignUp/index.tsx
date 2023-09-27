@@ -1,8 +1,12 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable unused-imports/no-unused-vars */
 import { useState } from 'react';
-import Modal from '../../components/auth/Modal';
+import Modal from '../../components/Modal';
 import { SignUpOptions } from './SignUpOptions';
 import { SignUpWithEmail } from './SignUpWithEmail';
 import { RegistrationSuccessMessage } from './RegistrationSuccessMessage';
+import { RegistrationBenefits } from '../../components/RegistrationBenefits';
+import s from './SignUp.module.scss';
 
 export const SignUp = () => {
   const [signUpEmail, setSignUpEmail] = useState<boolean>(false);
@@ -22,26 +26,22 @@ export const SignUp = () => {
   const handleSignUpEmail = () => {
     setSignUpEmail(true);
   };
+  console.log(signUpEmail);
+  console.log(isCongratulations);
 
   return (
-    <section>
+    <section className={s.section}>
+      <RegistrationBenefits />
       {!signUpEmail && !isCongratulations && (
         <SignUpOptions handleSignUpEmail={handleSignUpEmail} />
       )}
       {signUpEmail && <SignUpWithEmail openModal={openModal} />}
       {isModalOpen && (
         <Modal isOpen={isModalOpen} onClose={closeModal} buttonText='start work'>
-          <h2 className='text-2xl font-medium leading-[120%] mb-4'>
-            Congratulations, your company has become part of the `Name` marketplace in Ukraine!
-          </h2>
-          <p className='font-light leading-[120%]'>Potential customers are waiting for you!</p>
-          <p className='font-light leading-[120%] mt-2 mb-8'>
-            We have prepared everything so that you can sell on the Internet right now.
-          </p>
-          <h2 className='text-2xl font-medium leading-[120%]'>We will contact you.</h2>
-          <p className='font-light leading-[120%] mt-4 mb-10'>
-            Our manager will contact you at the specified phone number. Expect a call during
-            business hours: 9:00 a.m. to 6:00 p.m.
+          <h2 className={s.modal_title}>Дякуємо за реєстрацію!</h2>
+          <p className={s.modal_text}>
+            Ми відправили вам на пошту лист, для підтвердження вашого облікового запису, перейдіть
+            за посиланням в листі.
           </p>
         </Modal>
       )}
