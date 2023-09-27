@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { useRef } from 'react';
 import { useForm, SubmitHandler, FormProvider, FieldValues } from 'react-hook-form';
 import { IUserAuth, AuthData } from '../../../types';
 import { registration } from '../../../store/auth/authThunks';
@@ -17,14 +16,11 @@ export const AuthForm = ({ openModal, isRegistration }: AuthData) => {
 
   const {
     register,
-    watch,
+    getValues,
     formState: { errors, isValid },
   } = methods;
 
   const dispatch = useAppDispatch();
-
-  const password = useRef({});
-  password.current = watch('password', '');
 
   const onSubmit: SubmitHandler<IUserAuth> = (data) => {
     if (isRegistration) {
@@ -90,7 +86,9 @@ export const AuthForm = ({ openModal, isRegistration }: AuthData) => {
             <PasswordInput
               id='passwordRepeat'
               placeholder='Repeat Pass'
-              validate={(value: string) => value === password.current || 'Passwords do not match'}
+              validate={(value: string) =>
+                value === getValues('password') || 'Passwords do not match'
+              }
             />
             {errors.passwordRepeat && <p className={`${s.error}`}>Passwords do not match</p>}
           </>
