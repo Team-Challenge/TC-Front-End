@@ -13,12 +13,10 @@ export const RegistrationSuccessMessage = () => {
         <AuthButton
           text='Повернутись на головну'
           variant='secondary'
-          // className='w-[156px] text-black text-xs bg-white font-light border-black'
           onClick={() => navigate(`/`)}
         />
         <AuthButton
           text='Увійти'
-          // className='w-[156px] text-white text-xs font-light border-black'
           onClick={() => navigate(`/signin`)}
         />
       </div>

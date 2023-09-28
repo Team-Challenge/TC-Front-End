@@ -1,4 +1,4 @@
-import { benefitsOfRegistration } from '../../constants';
+import { benefitsOfRegistration } from '../../../constants';
 import s from './RegistrationBenefits.module.scss';
 
 export const RegistrationBenefits = () => {

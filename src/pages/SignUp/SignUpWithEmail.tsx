@@ -1,5 +1,5 @@
 import { SignUpEmailProps } from '../../types';
-import { AuthForm } from '../../components/auth/AuthForm';
+import { RegistrationForm } from '../../components/auth/AuthForm/RegistrationForm';
 import { AuthHeader } from '../../components/auth/AuthHeader';
 import s from './SignUp.module.scss';
 
@@ -8,7 +8,7 @@ export const SignUpWithEmail = ({ openModal }: SignUpEmailProps) => {
     <div className={s.email}>
       <div className={s.email_form}>
         <AuthHeader text='Реєстрація' />
-        <AuthForm isRegistration openModal={openModal} />
+        <RegistrationForm openModal={openModal} />
       </div>
     </div>
   );

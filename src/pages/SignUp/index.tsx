@@ -1,11 +1,9 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable unused-imports/no-unused-vars */
 import { useState } from 'react';
 import Modal from '../../components/Modal';
 import { SignUpOptions } from './SignUpOptions';
 import { SignUpWithEmail } from './SignUpWithEmail';
 import { RegistrationSuccessMessage } from './RegistrationSuccessMessage';
-import { RegistrationBenefits } from '../../components/RegistrationBenefits';
+import { RegistrationBenefits } from '../../components/auth/RegistrationBenefits';
 import s from './SignUp.module.scss';
 
 export const SignUp = () => {
@@ -26,8 +24,6 @@ export const SignUp = () => {
   const handleSignUpEmail = () => {
     setSignUpEmail(true);
   };
-  console.log(signUpEmail);
-  console.log(isCongratulations);
 
   return (
     <section className={s.section}>
