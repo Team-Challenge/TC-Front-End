@@ -28,28 +28,34 @@ export const TextInput = ({
   maxLengthMessage,
   className,
 }: TextInputProps) => {
-  const { register } = useFormContext();
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
 
   return (
-    <input
-      type={type}
-      placeholder={placeholder}
-      {...register(id, {
-        required: required,
-        pattern: {
-          value: regex as RegExp,
-          message: errorMessage as string,
-        },
-        maxLength: {
-          value: maxLength as number,
-          message: maxLengthMessage as string,
-        },
-        minLength: {
-          value: minLength as number,
-          message: minLengthMessage as string,
-        },
-      })}
-      className={`${s.input} ${className}`}
-    />
+    <>
+      <input
+        type={type}
+        placeholder={placeholder}
+        {...register(id, {
+          required: required,
+          pattern: {
+            value: regex as RegExp,
+            message: errorMessage as string,
+          },
+          maxLength: {
+            value: maxLength as number,
+            message: maxLengthMessage as string,
+          },
+          minLength: {
+            value: minLength as number,
+            message: minLengthMessage as string,
+          },
+        })}
+        className={`${s.input} ${className}`}
+      />
+      {errors[id] && <p className={`${s.error}`}>{errors[id]?.message as string}</p>}
+    </>
   );
 };
