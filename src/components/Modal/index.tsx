@@ -8,15 +8,12 @@ export const Modal = ({ isOpen, onClose, children, buttonText }: ModalProps) => 
     <div className={s.modal}>
       <div className={s.modal_block}>
         {children}
-        <button
-          className={s.modal_btn}
-          onClick={onClose}
-        >
-          {buttonText}
-        </button>
+        {buttonText && (
+          <button className={s.modal_btn} onClick={onClose}>
+            {buttonText}
+          </button>
+        )}
       </div>
     </div>
   );
 };
-
-export default Modal;
