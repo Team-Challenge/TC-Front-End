@@ -1,0 +1,21 @@
+.input {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid #818181;
+  padding: 14px 16px;
+
+  &::placeholder {
+    color: #818181;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 120%;
+  }
+}
+
+.error {
+  font-size: 0.7rem;
+  color: red;
+  margin-top: -0.5rem;
+}

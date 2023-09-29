@@ -1,13 +1,14 @@
 import { SignUpEmailProps } from '../../types';
-import { AuthForm } from '../../components/auth/AuthForm';
+import { RegistrationForm } from '../../components/auth/AuthForm/RegistrationForm';
 import { AuthHeader } from '../../components/auth/AuthHeader';
+import s from './SignUp.module.scss';
 
 export const SignUpWithEmail = ({ openModal }: SignUpEmailProps) => {
   return (
-    <div className='h-screen flex items-center justify-center'>
-      <div className='flex flex-col items-start justify-center w-[450px] ml-[155px] mr-[145px] my-[150px]'>
-        <AuthHeader text='Sign up' />
-        <AuthForm isRegistration openModal={openModal} />
+    <div className={s.email}>
+      <div className={s.email_form}>
+        <AuthHeader text='Реєстрація' />
+        <RegistrationForm openModal={openModal} />
       </div>
     </div>
   );

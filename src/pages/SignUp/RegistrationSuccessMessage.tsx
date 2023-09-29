@@ -1,22 +1,22 @@
 import { useNavigate } from 'react-router-dom';
 import { AuthHeader } from '../../components/auth/AuthHeader';
 import { AuthButton } from '../../components/auth/AuthButton';
+import s from './SignUp.module.scss';
 
 export const RegistrationSuccessMessage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className='flex flex-col items-start justify-center w-[450px] ml-[155px] mr-[145px] my-[150px]'>
-      <AuthHeader text='Congratulations' />
-      <div className='flex gap-6'>
+    <div className={s.message}>
+      <AuthHeader text='Вітаємо!' />
+      <div className={s.message_buttons}>
         <AuthButton
-          text='Go to main page'
-          className='w-[156px] text-black text-xs bg-white font-light border-black'
+          text='Повернутись на головну'
+          variant='secondary'
           onClick={() => navigate(`/`)}
         />
         <AuthButton
-          text='Sign in'
-          className='w-[156px] text-white text-xs font-light border-black'
+          text='Увійти'
           onClick={() => navigate(`/signin`)}
         />
       </div>

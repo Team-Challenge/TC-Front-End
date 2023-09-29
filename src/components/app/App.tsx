@@ -1,8 +1,6 @@
-import { SignUp } from '../../pages/SignUp';
-import { Routes, Route } from 'react-router';
-import { SignIn } from '../../pages/SignIn';
-import { RegistrationBenefits } from '../auth/RegistrationBenefits';
 import { useEffect } from 'react';
+import { Routes, Route } from 'react-router';
+import { SignIn, SignUp, UserPanel } from '../../pages';
 import { checkAuth } from '../../store/auth/authActions';
 
 const App: React.FC = () => {
@@ -13,11 +11,11 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div className='h-screen w-full grid grid-cols-[50%_50%]'>
-      <RegistrationBenefits />
+    <div>
       <Routes>
         <Route path='/' element={<SignUp />} />
         <Route path='/signin' element={<SignIn />} />
+        <Route path='/userpanel' element={<UserPanel />} />
       </Routes>
     </div>
   );
