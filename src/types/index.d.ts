@@ -6,9 +6,9 @@ export type AppDispatch = typeof store.dispatch;
 
 export interface ModalProps {
   isOpen: boolean;
-  onClose: () => void;
+  onClose?: () => void;
   children: React.ReactNode;
-  buttonText: string;
+  buttonText?: string;
 }
 
 export interface SignUpOptionsProps {
