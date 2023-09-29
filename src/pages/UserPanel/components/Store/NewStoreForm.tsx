@@ -4,8 +4,6 @@ import s from './Store.module.scss';
 
 interface NewStoreFormData {
   store_name: string;
-  category: string;
-  code: number;
 }
 
 export const NewStoreForm = () => {
@@ -37,31 +35,6 @@ export const NewStoreForm = () => {
             required={true}
             regex={/^[a-zA-Z\xC0-\uFFFF]+([ \-']{0,1}[a-zA-Z\xC0-\uFFFF]+){3,5}[.]{0,1}$/}
             errorMessage='Будь ласка, введіть назву свого магазину'
-          />
-        </label>
-        <label className={s.form_label}>
-          Сфера *
-          <TextInput
-            type='text'
-            id='category'
-            placeholder='Гарні цяцьки'
-            required={true}
-            regex={/^[a-zA-Z\xC0-\uFFFF]+([ \-']{0,1}[a-zA-Z\xC0-\uFFFF]+){3,5}[.]{0,1}$/}
-            errorMessage='Будь ласка, введіть категорію'
-          />
-        </label>
-        <label className={s.form_label}>
-          ЄДРПОУ *
-          <TextInput
-            type='text'
-            id='code'
-            placeholder='8578865464646'
-            required={true}
-            regex={/^[0-9]*$/}
-            minLength={7}
-            maxLength={7}
-            maxLengthMessage='Будь ласка, введіть справний ЄДРПОУ'
-            minLengthMessage='Будь ласка, введіть справний ЄДРПОУ'
           />
         </label>
         <button disabled={!isValid} className={s.form_btn}>
