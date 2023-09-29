@@ -15,3 +15,30 @@ export const benefitsOfRegistration = [
       'The Anglo-Zanzibar War, which occurred on August 27, 1896, holds the record for being the shortest war ever recorded.',
   },
 ];
+
+export const buttonOrderData = [
+  {
+    id: 1,
+    label: 'Всі',
+  },
+  {
+    id: 2,
+    label: 'Нові',
+  },
+  {
+    id: 3,
+    label: 'В процесі',
+  },
+  {
+    id: 4,
+    label: 'В доставці',
+  },
+  {
+    id: 5,
+    label: 'Завершені',
+  },
+  {
+    id: 6,
+    label: 'Архів',
+  },
+];
