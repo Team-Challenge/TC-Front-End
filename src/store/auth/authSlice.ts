@@ -22,7 +22,6 @@ const authSlice = createSlice({
     },
     setUser: (state, action: PayloadAction<IUserAuth>) => {
       state.user = action.payload;
-      console.log(state.user, 'user');
     },
     setLoading: (state, action: PayloadAction<boolean>) => {
       state.isLoading = action.payload;

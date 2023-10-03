@@ -4,18 +4,22 @@ import { AuthButton } from '../AuthButton';
 import { PasswordInput } from '../../UI/PasswordInput';
 import s from './AuthForm.module.scss';
 import { Email } from '../../Email';
+import { useAppDispatch } from '../../../hooks/reduxHook';
+import { login } from '../../../store/auth/authThunks';
 
 export const LoginForm = () => {
   const methods = useForm({
     mode: 'onChange',
   });
 
+  const dispatch = useAppDispatch();
+
   const {
     formState: { errors, isValid },
   } = methods;
 
   const onSubmit: SubmitHandler<IUserAuth> = (data) => {
-    console.log(data);
+    dispatch(login(data));
   };
 
   return (
@@ -25,10 +29,10 @@ export const LoginForm = () => {
         className={s.form}
         onSubmit={methods.handleSubmit(onSubmit as SubmitHandler<FieldValues>)}
       >
-         <Email />
+        <Email />
 
-          <PasswordInput id='password' placeholder='Pass' />
-          {errors.password && <p className={`${s.error}`}>{errors.password.message as string}</p>}
+        <PasswordInput id='password' placeholder='Pass' />
+        {errors.password && <p className={`${s.error}`}>{errors.password.message as string}</p>}
 
         <AuthButton
           text='Далі'
