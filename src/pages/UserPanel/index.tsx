@@ -4,14 +4,16 @@ import { Order } from './components/Order';
 import { FavoriteProducts } from './components/FavoriteProducts';
 import { Store } from './components/Store';
 import { Settings } from './components/Settings';
+import { Messages } from './components/Messages';
 import s from './UserPanel.module.scss';
 
 const buttonData = [
   { id: '1', label: 'Профіль', content: <Profile /> },
   { id: '2', label: 'Ваші замовлення', content: <Order /> },
-  { id: '3', label: 'Обрані товари', content: <FavoriteProducts /> },
-  { id: '4', label: 'Мій магазин', content: <Store /> },
-  { id: '5', label: 'Налаштування', content: <Settings /> },
+  { id: '3', label: 'Повідомлення', content: <Messages /> },
+  { id: '4', label: 'Обрані товари', content: <FavoriteProducts /> },
+  { id: '5', label: 'Мій магазин', content: <Store /> },
+  { id: '6', label: 'Налаштування', content: <Settings /> },
 ];
 
 export const UserPanel = () => {

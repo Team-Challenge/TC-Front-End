@@ -22,22 +22,17 @@
   position: relative;
 
   &_title {
-    font-family: Roboto;
     font-size: 36px;
     font-weight: 400;
   }
 
   &_subtitle {
     color: #000;
-    font-family: Roboto;
     font-size: 20px;
-    font-weight: 400;
   }
 
   &_text {
     color: #818181;
-    font-family: Roboto;
-    font-weight: 400;
   }
 
   &_close {
@@ -54,8 +49,6 @@
 
   &_label {
     color: #212529;
-    font-family: Roboto;
-    font-weight: 400;
     line-height: 150%;
     display: grid;
     gap: 0.5rem;
@@ -67,8 +60,6 @@
     border: 1px solid #0D6EFD;
     background: #0D6EFD;
     color:#FFF;
-    font-family: Roboto;
-    font-weight: 400;
     line-height: 150%;
     width: 155px;
   }

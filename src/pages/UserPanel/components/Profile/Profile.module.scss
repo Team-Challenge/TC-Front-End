@@ -1,0 +1,24 @@
+.subtitle {
+  color: #000;
+  font-size: 21px;
+  line-height: 24px;
+  margin-bottom: 1rem;
+}
+
+.form {
+  width: 368px;
+  display: grid;
+  gap: 0.5rem;
+
+  &_label {
+    display: grid;
+    gap: 0.5rem;
+    color: #818181;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  &_btn {
+    width: 100%;
+  }
+}

@@ -1,6 +1,6 @@
 .panel {
   display: grid;
-  grid-template-columns: 212px 1fr;
+  grid-template-columns: 244px 1fr;
   column-gap: 100px;
   margin: 50px;
 }
@@ -12,10 +12,7 @@
 
 .btn {
   color: #000;
-  font-family: Roboto;
   font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
   line-height: normal;
   padding: 1rem;
   display: flex;
