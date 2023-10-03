@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { SignIn, SignUp, UserPanel } from '../../pages';
+import { SignIn, SignUp, UserPanel, PageNotFound } from '../../pages';
 import { checkAuth } from '../../store/auth/authActions';
-import { PageNotFound } from '../../pages/PageNotFound';
 
 const App: React.FC = () => {
   useEffect(() => {
