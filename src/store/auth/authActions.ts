@@ -1,19 +1,17 @@
 import axios from 'axios';
-import { AuthResponse } from '../../types';
+import { AppDispatch, AuthResponse } from '../../types';
 import { setAuth, setUser, setLoading } from './authSlice';
 import { BASE_URL } from '../../http';
-import { useAppDispatch } from '../../hooks/reduxHook';
 
 interface ErrorMessage {
   message: string;
 }
 
 export const checkAuth = () => {
-  const dispatch = useAppDispatch();
-  return async () => {
+  return async (dispatch: AppDispatch) => {
     dispatch(setLoading(true));
     try {
-      const response = await axios.get<AuthResponse>(`${BASE_URL}/accounts/refresh`, {
+      const response = await axios.get<AuthResponse>(`${BASE_URL}/refresh`, {
         withCredentials: true,
       });
       console.log(response);
