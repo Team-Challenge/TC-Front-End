@@ -25,7 +25,7 @@ $api.interceptors.request.use(
         const response = await axios.get<AuthResponse>(`${BASE_URL}/accounts/refresh`, {
           withCredentials: true,
         });
-        localStorage.setItem('token', response.data.accessToken);
+        localStorage.setItem('token', response.data.access_token);
         return $api.request(originalRequest);
       } catch (e) {
         console.log('not auth');

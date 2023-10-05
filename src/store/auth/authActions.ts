@@ -15,7 +15,7 @@ export const checkAuth = () => {
         withCredentials: true,
       });
       console.log(response);
-      localStorage.setItem('token', response.data.accessToken);
+      localStorage.setItem('token', response.data.access_token);
       dispatch(setAuth(true));
       dispatch(setUser(response.data.user));
     } catch (e) {
