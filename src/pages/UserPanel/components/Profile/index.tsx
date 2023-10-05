@@ -1,6 +1,7 @@
 import { FieldValues, FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { FullName } from '../../../../components/FullName';
 import { ButtonUI } from '../../../../components/UI/ButtonUI';
+import { ProfilePhoto } from './ProfilePhoto';
 import s from './Profile.module.scss';
 
 interface changeFullNameFormData {
@@ -21,7 +22,8 @@ export const Profile = () => {
   return (
     <div>
       <h1 className='user-panel-title'>Профіль</h1>
-      <h2 className={s.subtitle}>Налаштування профілю</h2>
+      <ProfilePhoto />
+      <h2 className='user-panel-subtitle'>Налаштування профілю</h2>
       <FormProvider {...methods}>
         <form
           id='changeFullName'
