@@ -30,9 +30,6 @@ export const RegistrationForm = ({ openModal }: AuthData) => {
     };
     dispatch(registration(postData));
     dispatch(setUser(postData));
-    console.log('data', postData);
-
-    console.log(data);
   };
 
   return (
@@ -69,12 +66,7 @@ export const RegistrationForm = ({ openModal }: AuthData) => {
           </span>
         </div>
 
-        <AuthButton
-          text='Далі'
-          variant='main'
-          disabled={!isValid}
-          onClick={openModal}
-        />
+        <AuthButton text='Далі' variant='main' disabled={!isValid} onClick={openModal} />
       </form>
     </FormProvider>
   );
