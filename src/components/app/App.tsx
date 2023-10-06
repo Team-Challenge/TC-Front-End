@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import { Routes, Route } from 'react-router';
-import { SignIn, SignUp, UserPanel } from '../../pages';
+import { Routes, Route } from 'react-router-dom';
+import { SignIn, SignUp, UserPanel, PageNotFound } from '../../pages';
 import { checkAuth } from '../../store/auth/authActions';
 
 const App: React.FC = () => {
@@ -16,6 +16,7 @@ const App: React.FC = () => {
         <Route path='/' element={<SignUp />} />
         <Route path='/signin' element={<SignIn />} />
         <Route path='/userpanel' element={<UserPanel />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
   );
