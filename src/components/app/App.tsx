@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Routes, Route } from 'react-router';
 import { useAppSelector } from '../../hooks/reduxHook';
 import { checkAuth } from '../../store/auth/authActions';
-import { SignIn, SignUp, UserPanel } from '../../pages';
+import { SignIn, SignUp, UserPanel, PageNotFound } from '../../pages';
 
 const App: React.FC = () => {
   const { isAuth } = useAppSelector((state) => state.auth);
@@ -28,6 +28,7 @@ const App: React.FC = () => {
             ))}
           </>
         )}
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
   );
