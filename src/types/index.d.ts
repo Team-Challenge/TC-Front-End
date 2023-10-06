@@ -28,8 +28,8 @@ export interface SignUpEmailProps {
 }
 
 export interface AuthResponse {
-  accessToken: string;
-  refreshToken: string;
+  access_token: string;
+  refresh_token: string;
   user: SignUpEmailType;
 }
 
@@ -49,5 +49,3 @@ export interface AuthButtonProps {
   variant?: string;
   disabled?: boolean;
 }
-
-

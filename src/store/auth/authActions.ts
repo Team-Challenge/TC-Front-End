@@ -11,11 +11,11 @@ export const checkAuth = () => {
   return async (dispatch: AppDispatch) => {
     dispatch(setLoading(true));
     try {
-      const response = await axios.get<AuthResponse>(`${BASE_URL}/refresh`, {
+      const response = await axios.get<AuthResponse>(`${BASE_URL}/accounts/refresh`, {
         withCredentials: true,
       });
       console.log(response);
-      localStorage.setItem('token', response.data.accessToken);
+      localStorage.setItem('token', response.data.access_token);
       dispatch(setAuth(true));
       dispatch(setUser(response.data.user));
     } catch (e) {

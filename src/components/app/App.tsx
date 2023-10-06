@@ -1,9 +1,12 @@
 import { useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
-import { SignIn, SignUp, UserPanel, PageNotFound } from '../../pages';
+import { Routes, Route } from 'react-router';
+import { useAppSelector } from '../../hooks/reduxHook';
 import { checkAuth } from '../../store/auth/authActions';
+import { SignIn, SignUp, UserPanel, PageNotFound } from '../../pages';
 
 const App: React.FC = () => {
+  const { isAuth } = useAppSelector((state) => state.auth);
+
   useEffect(() => {
     if (localStorage.getItem('token')) {
       checkAuth();
@@ -13,9 +16,18 @@ const App: React.FC = () => {
   return (
     <div>
       <Routes>
-        <Route path='/' element={<SignUp />} />
-        <Route path='/signin' element={<SignIn />} />
-        <Route path='/userpanel' element={<UserPanel />} />
+        {!isAuth ? (
+          <>
+            <Route path='/' element={<SignUp />} />
+            <Route path='/signin' element={<SignIn />} />
+          </>
+        ) : (
+          <>
+            {['/', '/userpanel', '/signin'].map((path) => (
+              <Route key={path} path={path} element={<UserPanel />} />
+            ))}
+          </>
+        )}
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>

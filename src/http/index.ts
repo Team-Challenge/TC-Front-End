@@ -22,10 +22,10 @@ $api.interceptors.request.use(
     if (error.response.status == 401 && error.config && !error.config._isRetry) {
       originalRequest._isRetry = true;
       try {
-        const response = await axios.get<AuthResponse>(`${BASE_URL}/refresh`, {
+        const response = await axios.get<AuthResponse>(`${BASE_URL}/accounts/refresh`, {
           withCredentials: true,
         });
-        localStorage.setItem('token', response.data.accessToken);
+        localStorage.setItem('token', response.data.access_token);
         return $api.request(originalRequest);
       } catch (e) {
         console.log('not auth');
