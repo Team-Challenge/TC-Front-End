@@ -9,7 +9,7 @@ interface AuthState {
 
 const initialState: AuthState = {
   user: {} as IUserAuth,
-  isAuth: true,
+  isAuth: false,
   isLoading: false,
 };
 
