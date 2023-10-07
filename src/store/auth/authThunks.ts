@@ -7,7 +7,6 @@ export const login = createAsyncThunk(
   async (credentials: { email: string; password: string }, { dispatch }) => {
     const response = await AuthService.login(credentials.email, credentials.password);
     localStorage.setItem('token', response.data.access_token);
-    localStorage.setItem('token', response.data.refresh_token);
     dispatch(setAuth(true));
 
     return response.data;

@@ -3,6 +3,8 @@ import { FullName } from '../../../../components/FullName';
 import { ButtonUI } from '../../../../components/UI/ButtonUI';
 import { ProfilePhoto } from './ProfilePhoto';
 import s from './Profile.module.scss';
+import { useAppDispatch } from '../../../../hooks/reduxHook';
+import { changeFullName } from '../../../../store/userSettings/userSettingsThunks';
 
 interface changeFullNameFormData {
   full_name: string;
@@ -15,8 +17,11 @@ export const Profile = () => {
     formState: { isValid },
   } = methods;
 
+  const dispatch = useAppDispatch();
+
   const onSubmit = (data: changeFullNameFormData) => {
-    console.log(data);
+    const newName = data.full_name;
+    dispatch(changeFullName(newName));
   };
 
   return (
