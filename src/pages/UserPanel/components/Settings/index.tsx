@@ -4,6 +4,8 @@ import s from './Settings.module.scss';
 import { PasswordInput } from '../../../../components/UI/PasswordInput';
 import { Email } from '../../../../components/Email';
 import { ButtonUI } from '../../../../components/UI/ButtonUI';
+import { useAppDispatch } from '../../../../hooks/reduxHook';
+import { changePhoneNumber } from '../../../../store/userSettings/userSettingsThunks';
 
 interface SettingsFromData {
   oldPassword?: string;
@@ -18,6 +20,8 @@ export const Settings = () => {
     mode: 'onChange',
   });
 
+  const dispatch = useAppDispatch();
+
   const {
     getValues,
     watch,
@@ -31,6 +35,7 @@ export const Settings = () => {
   const isAnyPasswordFilled = Boolean(newPassword || newPasswordRepeat || oldPassword);
 
   const onSubmit = (data: SettingsFromData) => {
+    dispatch(changePhoneNumber(data.phoneNumber));
     console.log(data);
   };
 
@@ -45,11 +50,19 @@ export const Settings = () => {
         >
           <label className={s.form_label}>
             Зміна паролю
-            <PasswordInput id='oldPassword' placeholder='Старий пароль' required={isAnyPasswordFilled} />
+            <PasswordInput
+              id='oldPassword'
+              placeholder='Старий пароль'
+              required={isAnyPasswordFilled}
+            />
             {/* {errors.oldPassword && (
               <p className={`${s.form_error}`}>Невірний старий пароль</p>
             )} */}
-            <PasswordInput id='newPassword' placeholder='Новий пароль' required={isAnyPasswordFilled} />
+            <PasswordInput
+              id='newPassword'
+              placeholder='Новий пароль'
+              required={isAnyPasswordFilled}
+            />
             {errors.newPassword && (
               <p className={`${s.form_error}`}>{errors.newPassword.message as string}</p>
             )}
