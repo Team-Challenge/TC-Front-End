@@ -2,7 +2,7 @@ import { FieldValues, FormProvider, SubmitHandler, useForm } from 'react-hook-fo
 import { TextInput } from '../../../../components/UI/TextInput';
 import s from './Settings.module.scss';
 import { PasswordInput } from '../../../../components/UI/PasswordInput';
-import { Email } from '../../../../components/Email';
+// import { Email } from '../../../../components/Email';
 import { ButtonUI } from '../../../../components/UI/ButtonUI';
 import { useAppDispatch } from '../../../../hooks/reduxHook';
 import { changePhoneNumber } from '../../../../store/userSettings/userSettingsThunks';
@@ -79,11 +79,11 @@ export const Settings = () => {
             )}
           </label>
 
-          <label className={s.form_label}>
+          {/* <label className={s.form_label}>
             Сповіщення
             <p className={s.form_hints}>Введіть пошту на яку ви хочете отримувати сповіщення</p>
             <Email required={false} />
-          </label>
+          </label> */}
 
           <label className={s.form_label}>
             Особисті дані
