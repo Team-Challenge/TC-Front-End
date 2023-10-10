@@ -20,8 +20,15 @@ export const Settings = () => {
 
   const {
     getValues,
+    watch,
     formState: { errors },
   } = methods;
+
+  const oldPassword = watch('oldPassword');
+  const newPassword = watch('newPassword');
+  const newPasswordRepeat = watch('newPasswordRepeat');
+
+  const isAnyPasswordFilled = Boolean(newPassword || newPasswordRepeat || oldPassword);
 
   const onSubmit = (data: SettingsFromData) => {
     console.log(data);
@@ -38,19 +45,18 @@ export const Settings = () => {
         >
           <label className={s.form_label}>
             Зміна паролю
-            <PasswordInput id='oldPassword' placeholder='Старий пароль' />
+            <PasswordInput id='oldPassword' placeholder='Старий пароль' required={isAnyPasswordFilled} />
             {/* {errors.oldPassword && (
               <p className={`${s.form_error}`}>Невірний старий пароль</p>
             )} */}
-
-            <PasswordInput id='newPassword' placeholder='Новий пароль' />
+            <PasswordInput id='newPassword' placeholder='Новий пароль' required={isAnyPasswordFilled} />
             {errors.newPassword && (
               <p className={`${s.form_error}`}>{errors.newPassword.message as string}</p>
             )}
-
             <PasswordInput
               id='newPasswordRepeat'
               placeholder='Повторіть пароль'
+              required={isAnyPasswordFilled}
               validate={(value: string) =>
                 value === getValues('newPassword') || 'Passwords do not match'
               }
@@ -63,7 +69,7 @@ export const Settings = () => {
           <label className={s.form_label}>
             Сповіщення
             <p className={s.form_hints}>Введіть пошту на яку ви хочете отримувати сповіщення</p>
-            <Email />
+            <Email required={false} />
           </label>
 
           <label className={s.form_label}>
