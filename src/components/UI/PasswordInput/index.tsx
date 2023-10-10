@@ -6,10 +6,11 @@ import { EyeIcon } from '../../icons/EyeIcon';
 interface PasswordInputProps {
   id: string;
   placeholder: string;
+  required: boolean;
   validate?: any;
 }
 
-export const PasswordInput = ({ id, placeholder, validate }: PasswordInputProps) => {
+export const PasswordInput = ({ id, placeholder, validate, required }: PasswordInputProps) => {
   const { register } = useFormContext();
 
   const [passwordShown, setPasswordShown] = useState(false);
@@ -29,7 +30,7 @@ export const PasswordInput = ({ id, placeholder, validate }: PasswordInputProps)
             message:
               'Your password must contain at least one uppercase letter, one lowercase letter, and a number',
           },
-          required: true,
+          required: required,
           minLength: {
             value: 8,
             message: 'Minimum of 8 characters',

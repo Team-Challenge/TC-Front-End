@@ -42,12 +42,13 @@ export const RegistrationForm = ({ openModal }: AuthData) => {
         <FullName />
         <Email />
 
-        <PasswordInput id='password' placeholder='Pass' />
+        <PasswordInput id='password' placeholder='Pass' required={true} />
         {errors.password && <p className={`${s.error}`}>{errors.password.message as string}</p>}
 
         <PasswordInput
           id='passwordRepeat'
           placeholder='Repeat Pass'
+          required={true}
           validate={(value: string) => value === getValues('password') || 'Passwords do not match'}
         />
         {errors.passwordRepeat && <p className={`${s.error}`}>Passwords do not match</p>}

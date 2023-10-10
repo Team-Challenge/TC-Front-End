@@ -40,7 +40,7 @@ export const LoginForm = () => {
       >
         <Email />
 
-        <PasswordInput id='password' placeholder='Pass' />
+        <PasswordInput id='password' placeholder='Pass' required={true} />
         {errors.password && <p className={`${s.error}`}>{errors.password.message as string}</p>}
 
         <AuthButton text='Далі' variant='main' disabled={!isValid} onClick={isUserAuth} />
