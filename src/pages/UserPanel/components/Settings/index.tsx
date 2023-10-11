@@ -5,7 +5,10 @@ import { PasswordInput } from '../../../../components/UI/PasswordInput';
 // import { Email } from '../../../../components/Email';
 import { ButtonUI } from '../../../../components/UI/ButtonUI';
 import { useAppDispatch } from '../../../../hooks/reduxHook';
-import { changePhoneNumber } from '../../../../store/userSettings/userSettingsThunks';
+import {
+  changePassword,
+  changePhoneNumber,
+} from '../../../../store/userSettings/userSettingsThunks';
 
 interface SettingsFromData {
   current_password?: string;
@@ -31,12 +34,19 @@ export const Settings = () => {
   const oldPassword = watch('current_password');
   const newPassword = watch('new_password');
   const newPasswordRepeat = watch('new_password_repeat');
+  const phoneNumber = watch('phoneNumber');
 
   const isAnyPasswordFilled = Boolean(newPassword || newPasswordRepeat || oldPassword);
 
   const onSubmit = (data: SettingsFromData) => {
-    dispatch(changePhoneNumber(data.phoneNumber));
-    console.log(data);
+    if (phoneNumber) {
+      dispatch(changePhoneNumber(data.phoneNumber));
+    }
+    if (newPassword) {
+      dispatch(
+        changePassword({ currentPassword: data.current_password, newPassword: data.new_password }),
+      );
+    }
   };
 
   return (

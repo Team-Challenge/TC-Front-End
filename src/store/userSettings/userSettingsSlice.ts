@@ -9,6 +9,7 @@ interface UserState {
 const initialState = {
   full_name: '',
   phone_number: '',
+  new_password: '',
 } as UserState;
 
 const userSettingsSlice = createSlice({

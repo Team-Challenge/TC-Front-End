@@ -58,7 +58,10 @@ export const changePhoneNumber = createAsyncThunk(
 
 export const changePassword = createAsyncThunk(
   'userSettings/changePassword',
-  async (newPassword: string, { dispatch }) => {
+  async (
+    credentials: { currentPassword: string | undefined; newPassword: string | undefined },
+    { dispatch },
+  ) => {
     try {
       const token = localStorage.getItem('token');
       const headers = {
@@ -67,7 +70,8 @@ export const changePassword = createAsyncThunk(
       const response = await axios.post(
         'http://207.154.197.128:8080/accounts/change_password',
         {
-          new_password: newPassword,
+          current_password: credentials.currentPassword,
+          new_password: credentials.newPassword,
         },
         { headers },
       );
