@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 interface UserState {
   full_name: string;
   phone_number: string;
+  new_password: string;
 }
 
 const initialState = {
@@ -20,9 +21,12 @@ const userSettingsSlice = createSlice({
     setPhoneNumber: (state, action: PayloadAction<string>) => {
       state.phone_number = action.payload;
     },
+    setPassword: (state, action: PayloadAction<string>) => {
+      state.new_password = action.payload;
+    },
   },
 });
 
-export const { setFullName, setPhoneNumber } = userSettingsSlice.actions;
+export const { setFullName, setPhoneNumber, setPassword } = userSettingsSlice.actions;
 
 export default userSettingsSlice.reducer;
