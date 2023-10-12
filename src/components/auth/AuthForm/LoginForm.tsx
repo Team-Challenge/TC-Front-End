@@ -21,14 +21,13 @@ export const LoginForm = () => {
     formState: { errors, isValid },
   } = methods;
 
+  const onSubmit: SubmitHandler<IUserAuth> = (data) => {
+    dispatch(login(data));
+  };
   const isUserAuth = () => {
     if (isAuth) {
       navigate('/userpanel');
     }
-  };
-
-  const onSubmit: SubmitHandler<IUserAuth> = (data) => {
-    dispatch(login(data));
   };
 
   return (
