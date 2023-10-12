@@ -1,15 +1,18 @@
 import { useEffect } from 'react';
 import { Routes, Route } from 'react-router';
-import { useAppSelector } from '../../hooks/reduxHook';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHook';
 import { checkAuth } from '../../store/auth/authActions';
 import { SignIn, SignUp, UserPanel, PageNotFound } from '../../pages';
+import { setAuth } from '../../store/auth/authSlice';
 
 const App: React.FC = () => {
   const { isAuth } = useAppSelector((state) => state.auth);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (localStorage.getItem('token')) {
       checkAuth();
+      dispatch(setAuth(true));
     }
   }, []);
 
@@ -28,7 +31,7 @@ const App: React.FC = () => {
             ))}
           </>
         )}
-        <Route path="*" element={<PageNotFound />} />
+        <Route path='*' element={<PageNotFound />} />
       </Routes>
     </div>
   );
