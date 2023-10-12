@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { setFullName, setPhoneNumber } from './userSettingsSlice';
+import { setFullName, setPassword, setPhoneNumber } from './userSettingsSlice';
 import axios from 'axios';
 
 export const changeFullName = createAsyncThunk(
@@ -47,6 +47,36 @@ export const changePhoneNumber = createAsyncThunk(
       );
       if (response.status === 200) {
         dispatch(setPhoneNumber);
+        return response.data;
+      }
+    } catch (e) {
+      const error = e as Error;
+      throw error;
+    }
+  },
+);
+
+export const changePassword = createAsyncThunk(
+  'userSettings/changePassword',
+  async (
+    credentials: { currentPassword: string | undefined; newPassword: string | undefined },
+    { dispatch },
+  ) => {
+    try {
+      const token = localStorage.getItem('token');
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+      const response = await axios.post(
+        'http://207.154.197.128:8080/accounts/change_password',
+        {
+          current_password: credentials.currentPassword,
+          new_password: credentials.newPassword,
+        },
+        { headers },
+      );
+      if (response.status === 200) {
+        dispatch(setPassword);
         return response.data;
       }
     } catch (e) {

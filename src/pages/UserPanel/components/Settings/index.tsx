@@ -2,15 +2,18 @@ import { FieldValues, FormProvider, SubmitHandler, useForm } from 'react-hook-fo
 import { TextInput } from '../../../../components/UI/TextInput';
 import s from './Settings.module.scss';
 import { PasswordInput } from '../../../../components/UI/PasswordInput';
-import { Email } from '../../../../components/Email';
+// import { Email } from '../../../../components/Email';
 import { ButtonUI } from '../../../../components/UI/ButtonUI';
 import { useAppDispatch } from '../../../../hooks/reduxHook';
-import { changePhoneNumber } from '../../../../store/userSettings/userSettingsThunks';
+import {
+  changePassword,
+  changePhoneNumber,
+} from '../../../../store/userSettings/userSettingsThunks';
 
 interface SettingsFromData {
-  oldPassword?: string;
-  newPassword?: string;
-  newPasswordRepeat?: string;
+  current_password?: string;
+  new_password?: string;
+  new_password_repeat?: string;
   email?: string;
   phoneNumber?: string;
 }
@@ -28,15 +31,22 @@ export const Settings = () => {
     formState: { errors },
   } = methods;
 
-  const oldPassword = watch('oldPassword');
-  const newPassword = watch('newPassword');
-  const newPasswordRepeat = watch('newPasswordRepeat');
+  const oldPassword = watch('current_password');
+  const newPassword = watch('new_password');
+  const newPasswordRepeat = watch('new_password_repeat');
+  const phoneNumber = watch('phoneNumber');
 
   const isAnyPasswordFilled = Boolean(newPassword || newPasswordRepeat || oldPassword);
 
   const onSubmit = (data: SettingsFromData) => {
-    dispatch(changePhoneNumber(data.phoneNumber));
-    console.log(data);
+    if (phoneNumber) {
+      dispatch(changePhoneNumber(data.phoneNumber));
+    }
+    if (newPassword) {
+      dispatch(
+        changePassword({ currentPassword: data.current_password, newPassword: data.new_password }),
+      );
+    }
   };
 
   return (
@@ -51,7 +61,7 @@ export const Settings = () => {
           <label className={s.form_label}>
             Зміна паролю
             <PasswordInput
-              id='oldPassword'
+              id='current_password'
               placeholder='Старий пароль'
               required={isAnyPasswordFilled}
             />
@@ -59,31 +69,31 @@ export const Settings = () => {
               <p className={`${s.form_error}`}>Невірний старий пароль</p>
             )} */}
             <PasswordInput
-              id='newPassword'
+              id='new_password'
               placeholder='Новий пароль'
               required={isAnyPasswordFilled}
             />
-            {errors.newPassword && (
-              <p className={`${s.form_error}`}>{errors.newPassword.message as string}</p>
+            {errors.new_password && (
+              <p className={`${s.form_error}`}>{errors.new_password.message as string}</p>
             )}
             <PasswordInput
-              id='newPasswordRepeat'
+              id='new_password_repeat'
               placeholder='Повторіть пароль'
               required={isAnyPasswordFilled}
               validate={(value: string) =>
-                value === getValues('newPassword') || 'Passwords do not match'
+                value === getValues('new_password') || 'Passwords do not match'
               }
             />
-            {errors.newPasswordRepeat && (
+            {errors.new_password_repeat && (
               <p className={`${s.form_error}`}>Passwords do not match</p>
             )}
           </label>
 
-          <label className={s.form_label}>
+          {/* <label className={s.form_label}>
             Сповіщення
             <p className={s.form_hints}>Введіть пошту на яку ви хочете отримувати сповіщення</p>
             <Email required={false} />
-          </label>
+          </label> */}
 
           <label className={s.form_label}>
             Особисті дані
