@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { AuthResponse } from '../types';
 
-export const BASE_URL = 'http://207.154.197.128:8080/';
+export const BASE_URL = process.env.API_URL ? process.env.API_URL : 'http://207.154.197.128:8080';
+
 
 const $api = axios.create({
   withCredentials: true,
