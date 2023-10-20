@@ -6,6 +6,9 @@ import { Store } from './components/Store';
 import { Settings } from './components/Settings';
 import { Messages } from './components/Messages';
 import s from './UserPanel.module.scss';
+import { userLogout } from '../../store/userSettings/userSettingsThunks';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHook';
+import { useNavigate } from 'react-router';
 
 const buttonData = [
   { id: '1', label: 'Профіль', content: <Profile /> },
@@ -22,6 +25,16 @@ export const UserPanel = () => {
   const handleButtonClick = (content: ReactNode) => {
     setSelectedComponent(content);
   };
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const { isAuth } = useAppSelector((state) => state.auth);
+
+  const logoutUser = () => {
+    dispatch(userLogout());
+    if (!isAuth) {
+      navigate('/signin');
+    }
+  };
 
   return (
     <section className={s.panel}>
@@ -30,15 +43,13 @@ export const UserPanel = () => {
           <button
             key={button.id}
             onClick={() => handleButtonClick(button.content)}
-            className={`${s.btn} ${
-              selectedComponent === button.content ? s.active : ''
-            }`}
+            className={`${s.btn} ${selectedComponent === button.content ? s.active : ''}`}
           >
             {button.label}
           </button>
         ))}
         <span className={s.line}></span>
-        <button className={s.btn}>
+        <button className={s.btn} onClick={logoutUser}>
           Вийти
         </button>
       </div>
