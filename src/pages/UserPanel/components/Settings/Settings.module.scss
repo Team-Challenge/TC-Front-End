@@ -33,3 +33,22 @@
     margin-top: -2.5rem;
   }
 }
+
+.modal {
+  display: grid;
+  gap: 1rem;
+  position: relative;
+
+  &_subtitle {
+    color: #000;
+    font-size: 20px;
+  }
+
+  &_close {
+    position: absolute;
+    right: 0;
+    top: -3rem;
+    color: #FF0000;
+    padding: 0.7rem;
+  }
+}
