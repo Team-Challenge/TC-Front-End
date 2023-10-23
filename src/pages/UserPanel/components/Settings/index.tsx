@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import { FieldValues, FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { TextInput } from '../../../../components/UI/TextInput';
-import s from './Settings.module.scss';
+import { Modal } from '../../../../components/Modal';
 import { PasswordInput } from '../../../../components/UI/PasswordInput';
 // import { Email } from '../../../../components/Email';
 import { ButtonUI } from '../../../../components/UI/ButtonUI';
@@ -9,6 +10,7 @@ import {
   changePassword,
   changePhoneNumber,
 } from '../../../../store/userSettings/userSettingsThunks';
+import s from './Settings.module.scss';
 
 interface SettingsFromData {
   current_password?: string;
@@ -19,6 +21,13 @@ interface SettingsFromData {
 }
 
 export const Settings = () => {
+  const [message, setMessage] = useState<string>('');
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
   const methods = useForm<SettingsFromData>({
     mode: 'onChange',
   });
@@ -40,13 +49,28 @@ export const Settings = () => {
 
   const onSubmit = (data: SettingsFromData) => {
     if (phoneNumber) {
-      dispatch(changePhoneNumber(data.phoneNumber));
+      dispatch(changePhoneNumber(data.phoneNumber)).then((response) => {
+        if (response.payload) {
+          setMessage('Ваші дані успішно оновлено');
+        } else {
+          setMessage('Виникла помилка, спробуйте ще раз');
+        }
+      });
     }
+
     if (newPassword) {
       dispatch(
         changePassword({ currentPassword: data.current_password, newPassword: data.new_password }),
-      );
+      ).then((response) => {
+        if (response.payload) {
+          setMessage('Ваші дані успішно оновлено');
+        } else {
+          setMessage('Виникла помилка, спробуйте ще раз');
+        }
+      });
     }
+
+    setIsModalOpen(true);
   };
 
   return (
@@ -111,6 +135,18 @@ export const Settings = () => {
         </form>
       </FormProvider>
       <ButtonUI label='Видалити профіль' variant='secondary' className={s.btn_delete} />
+      {isModalOpen && message !== '' && (
+        <Modal isOpen={isModalOpen}>
+          <div className={s.modal}>
+            <div className={s.modal_subtitle}>
+              {message}
+            </div>
+            <button className={s.modal_close} onClick={toggleModal}>
+              X
+            </button>
+          </div>
+        </Modal>
+      )}
     </div>
   );
 };
