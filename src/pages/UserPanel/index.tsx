@@ -1,6 +1,9 @@
 import { useState, ReactNode } from 'react';
 import { Profile, Order, FavoriteProducts, Store, Settings, Messages } from '../../components';
 import s from './UserPanel.module.scss';
+import { userLogout } from '../../store/userSettings/userSettingsThunks';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHook';
+import { useNavigate } from 'react-router';
 
 const buttonData = [
   { id: '1', label: 'Профіль', content: <Profile /> },
@@ -17,6 +20,16 @@ export const UserPanel = () => {
   const handleButtonClick = (content: ReactNode) => {
     setSelectedComponent(content);
   };
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const { isAuth } = useAppSelector((state) => state.auth);
+
+  const logoutUser = () => {
+    dispatch(userLogout());
+    if (!isAuth) {
+      navigate('/signin');
+    }
+  };
 
   return (
     <section className={s.panel}>
@@ -31,7 +44,9 @@ export const UserPanel = () => {
           </button>
         ))}
         <span className={s.line}></span>
-        <button className={s.btn}>Вийти</button>
+        <button className={s.btn} onClick={logoutUser}>
+          Вийти
+        </button>
       </div>
       {selectedComponent}
     </section>
