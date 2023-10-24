@@ -1,5 +1,5 @@
 import { FieldValues, FormProvider, SubmitHandler, useForm } from 'react-hook-form';
-import { TextInput } from '../../../../components/UI/TextInput';
+import { TextInput } from '../../UI/TextInput';
 import s from './Store.module.scss';
 
 interface NewStoreFormData {

@@ -1,4 +1,4 @@
-import { ProductItem } from '../../../../components/ProductItem';
+import { ProductItem } from '../../ProductItem';
 import s from './FavoriteProducts.module.scss';
 
 export const FavoriteProducts = () => {

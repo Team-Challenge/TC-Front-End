@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { ButtonUI } from '../../../../components/UI/ButtonUI';
-import { Modal } from '../../../../components/Modal';
+import { ButtonUI } from '../../UI/ButtonUI';
+import { Modal } from '../../Modal';
 import { NewStoreForm } from './NewStoreForm';
 import s from './Store.module.scss';
 
@@ -34,7 +34,9 @@ export const Store = () => {
               Реєструючись, ви погоджуєтеся з угодою користувача і політикою конфіденційності
               маркетплейсу store.ua
             </p>
-            <button className={s.modal_close} onClick={toggleModal}>X</button>
+            <button className={s.modal_close} onClick={toggleModal}>
+              X
+            </button>
           </div>
         </Modal>
       )}
