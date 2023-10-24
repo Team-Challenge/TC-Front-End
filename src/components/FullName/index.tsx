@@ -1,11 +1,15 @@
 import { TextInput } from '../UI/TextInput';
 
-export const FullName = () => {
+interface FullNameProps {
+  placeholder: string;
+}
+
+export const FullName = ({ placeholder }: FullNameProps) => {
   return (
     <TextInput
       type='text'
       id='full_name'
-      placeholder='Full Name'
+      placeholder={placeholder}
       required={true}
       regex={/^[a-zA-Z\xC0-\uFFFF]+([ \-']{0,1}[a-zA-Z\xC0-\uFFFF]+){1,4}\s[a-zA-Z\xC0-\uFFFF]+([ \-']{0,1}[a-zA-Z\xC0-\uFFFF]+){0,2}$/u}
       errorMessage='Only letters'
