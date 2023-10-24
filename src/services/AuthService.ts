@@ -14,7 +14,7 @@ const AuthService = {
     return $api.post<AuthResponse>('/accounts/signup', { full_name, email, password });
   },
   logout: async (): Promise<void> => {
-    return $api.post('/logout');
+    return $api.delete('/accounts/logout');
   },
 };
 
