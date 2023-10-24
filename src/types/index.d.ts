@@ -49,3 +49,18 @@ export interface AuthButtonProps {
   variant?: string;
   disabled?: boolean;
 }
+
+export interface SettingsFromData {
+  current_password?: string;
+  new_password?: string;
+  new_password_repeat?: string;
+  email?: string;
+  phoneNumber?: string;
+}
+
+export interface UserInfo {
+  email: string;
+  full_name: string;
+  phone_number: string | null;
+  profile_picture: null;
+}
