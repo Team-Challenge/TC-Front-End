@@ -1,10 +1,5 @@
 import { useState, ReactNode } from 'react';
-import { Profile } from './components/Profile';
-import { Order } from './components/Order';
-import { FavoriteProducts } from './components/FavoriteProducts';
-import { Store } from './components/Store';
-import { Settings } from './components/Settings';
-import { Messages } from './components/Messages';
+import { Profile, Order, FavoriteProducts, Store, Settings, Messages } from '../../components';
 import s from './UserPanel.module.scss';
 
 const buttonData = [
@@ -30,17 +25,13 @@ export const UserPanel = () => {
           <button
             key={button.id}
             onClick={() => handleButtonClick(button.content)}
-            className={`${s.btn} ${
-              selectedComponent === button.content ? s.active : ''
-            }`}
+            className={`${s.btn} ${selectedComponent === button.content ? s.active : ''}`}
           >
             {button.label}
           </button>
         ))}
         <span className={s.line}></span>
-        <button className={s.btn}>
-          Вийти
-        </button>
+        <button className={s.btn}>Вийти</button>
       </div>
       {selectedComponent}
     </section>
