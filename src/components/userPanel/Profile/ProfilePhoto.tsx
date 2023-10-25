@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Modal } from '../../../../components/Modal';
-import { EditIcon } from '../../../../components/icons/EditIcon';
+import { Modal } from '../../Modal';
+import { EditIcon } from '../../icons/EditIcon';
 import s from './Profile.module.scss';
 
 export const ProfilePhoto = () => {
@@ -62,7 +62,7 @@ export const ProfilePhoto = () => {
             <div className={s.modal_buttons}>
               <label className={s.modal_btn_add}>
                 <EditIcon /> Додати нове
-                <input type='file' onChange={handleAdd} accept='.png, .jpg, .jpeg, .webp'/>
+                <input type='file' onChange={handleAdd} accept='.png, .jpg, .jpeg, .webp' />
               </label>
               <button onClick={handleDelete}>
                 <EditIcon /> Видалити

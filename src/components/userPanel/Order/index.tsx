@@ -1,5 +1,5 @@
-import { ProductItem } from '../../../../components/ProductItem';
-import { buttonOrderData } from '../../../../constants';
+import { ProductItem } from '../../ProductItem';
+import { buttonOrderData } from '../../../constants';
 import s from './Order.module.scss';
 
 export const Order = () => {
@@ -8,7 +8,9 @@ export const Order = () => {
       <h1 className='user-panel-title'>Ваші замовлення</h1>
       <div className={s.buttons}>
         {buttonOrderData.map((button) => (
-          <button key={button.id} className={s.button}>{button.label}</button>
+          <button key={button.id} className={s.button}>
+            {button.label}
+          </button>
         ))}
       </div>
       <div className={s.order}>

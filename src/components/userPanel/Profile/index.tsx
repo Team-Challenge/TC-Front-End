@@ -1,16 +1,18 @@
 import { FieldValues, FormProvider, SubmitHandler, useForm } from 'react-hook-form';
-import { FullName } from '../../../../components/FullName';
-import { ButtonUI } from '../../../../components/UI/ButtonUI';
+import { FullName } from '../../FullName';
+import { ButtonUI } from '../../UI/ButtonUI';
 import { ProfilePhoto } from './ProfilePhoto';
 import s from './Profile.module.scss';
-import { useAppDispatch } from '../../../../hooks/reduxHook';
-import { changeFullName } from '../../../../store/userSettings/userSettingsThunks';
+import { useAppDispatch } from '../../../hooks/reduxHook';
+import { changeFullName } from '../../../store/userSettings/userSettingsThunks';
+import { useAccountInfo } from '../../../hooks/useAccountInfo';
 
 interface changeFullNameFormData {
   full_name: string;
 }
 
 export const Profile = () => {
+  const accountInfo = useAccountInfo();
   const methods = useForm();
 
   const {
@@ -37,7 +39,7 @@ export const Profile = () => {
         >
           <label className={s.form_label}>
             Ім’я та Прізвище
-            <FullName />
+            <FullName placeholder={accountInfo?.full_name as string} />
           </label>
           <ButtonUI label='Зберігти' className={s.form_btn} disabled={!isValid} />
         </form>

@@ -1,10 +1,5 @@
 import { useState, ReactNode } from 'react';
-import { Profile } from './components/Profile';
-import { Order } from './components/Order';
-import { FavoriteProducts } from './components/FavoriteProducts';
-import { Store } from './components/Store';
-import { Settings } from './components/Settings';
-import { Messages } from './components/Messages';
+import { Profile, Order, FavoriteProducts, Store, Settings, Messages } from '../../components';
 import s from './UserPanel.module.scss';
 import { userLogout } from '../../store/userSettings/userSettingsThunks';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHook';

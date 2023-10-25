@@ -39,7 +39,7 @@ export const RegistrationForm = ({ openModal }: AuthData) => {
         className={s.form}
         onSubmit={methods.handleSubmit(onSubmit as SubmitHandler<FieldValues>)}
       >
-        <FullName />
+        <FullName placeholder='Full Name'/>
         <Email />
 
         <PasswordInput id='password' placeholder='Pass' required={true} />
