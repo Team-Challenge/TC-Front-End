@@ -32,9 +32,11 @@ export const Settings = () => {
       dispatch(changePhoneNumber(data.phoneNumber)).then((response) => {
         if (response.payload) {
           setMessage('Ваші дані успішно оновлено');
+          methods.reset();
         } else {
           setMessage('Виникла помилка, спробуйте ще раз');
         }
+        setIsModalOpen(true);
       });
     }
 
@@ -44,13 +46,14 @@ export const Settings = () => {
       ).then((response) => {
         if (response.payload) {
           setMessage('Ваші дані успішно оновлено');
+          methods.reset();
         } else {
-          setMessage('Виникла помилка, спробуйте ще раз');
+          setMessage('Виникла помилка, невірний старий пароль');
         }
+        setIsModalOpen(true);
       });
     }
     console.log(accountInfo);
-    setIsModalOpen(true);
   };
 
   return (
